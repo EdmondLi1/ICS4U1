@@ -13,7 +13,5 @@ public class Question0103 {
         double average = (a + b + c) / 3;
 
        System.out.println(average); 
-       
-       reader.close();
     }
 }

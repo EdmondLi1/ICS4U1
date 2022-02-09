@@ -14,8 +14,5 @@ public class Question0105 {
         int sumOfDigits = ones + tens + hundreads;
 
         System.out.println("Number: " + num + "\nSum of digits: " + sumOfDigits);
-
-        reader.close();
-
     }
 }

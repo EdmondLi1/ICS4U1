@@ -27,8 +27,5 @@ public class Question0104 {
         double amountTendered = reader.nextDouble();
 
         System.out.println("Change due: " + (amountTendered - total));
-    
-        reader.close();
     }
-
 }
