@@ -1,9 +1,9 @@
 public class Fraction {
-
+    
+    // (cho's order of stuff in class)
     // constructor methods
     // getters/setters
     // class/int method
-    // (cho's order of stuff in class)
 
     // fields / properties of the class
     private int numerator;
@@ -25,9 +25,9 @@ public class Fraction {
     }
 
     // ****
-    // 3. Overloaded Constructors Add the following constructors to the Fraction class:  A constructor that takes a double number as parameter 
-    // and constructs the corresponding rational number, eg., 0.98 is 49 / 50, -8.343 is -8343 / 1000.  A constructor that takes a 
-    // single int value as parameter, and so assigns that to the numerator and the denominator to 1. A constructor that takes no parameter 
+    // 3. Overloaded Constructors Add the following constructors to the Fraction class:  A constructor that takes a double number as parameter
+    // and constructs the corresponding rational number, eg., 0.98 is 49 / 50, -8.343 is -8343 / 1000.  A constructor that takes a
+    // single int value as parameter, and so assigns that to the numerator and the denominator to 1. A constructor that takes no parameter
     // and so initialises the fraction to 1.
 
     public Fraction(double decimal) {
@@ -38,7 +38,6 @@ public class Fraction {
         }
         this.numerator = (int) decimal;
         this.denominator = (int) Math.pow(10, n);
-        
         reduce();
     }
 
@@ -53,7 +52,7 @@ public class Fraction {
     }
 
     /////////////////////////////////////
-    //  getters and setters
+    //  Getters and Setters
     /////////////////////////////////////
 
     // Accessor Methods (Getters)
@@ -112,7 +111,6 @@ public class Fraction {
     // are equivalent, eg. -1/2 is equivalent to 2/-4. Test in the main method.
     // Fractions are equavalent if the cross multiply is the same
     public boolean equal(Fraction other) {
-//        return oneReduced.numerator == twoReduced.numerator && oneReduced.denominator == twoReduced.denominator;
         return numerator * other.denominator == denominator * other.numerator;
     }
 
@@ -125,15 +123,14 @@ public class Fraction {
         // outputs true if current Obj > 'other' Obj.
         return this.toDecimal() > other.toDecimal();
     }
-
-
+    
     ////////////////////////////////////////////
     //    2.1 Class and Objects Homework
     //////////////////////////////////////////
 
     // 1.
-    // a) public void timesEquals(Fraction other) This method should have the same 
-    // effect (for Fraction objects) that the *= operator has for primitive numeric types. 
+    // a) public void timesEquals(Fraction other) This method should have the same
+    // effect (for Fraction objects) that the *= operator has for primitive numeric types.
     // Thus, if called by the statement p.timesEquals(q);
     public void timesEqual(Fraction other) {
         numerator *= other.numerator ;
@@ -141,27 +138,24 @@ public class Fraction {
         reduce();
     }
 
-
     // b)  public void plusEquals(Fraction other) Same as above, but for +=.
     public void plusEquals(Fraction other) {
-        this.numerator = numerator * other.denominator + denominator * other.numerator;
-        this.denominator = denominator * other.denominator;
+        numerator = numerator * other.denominator + denominator * other.numerator;
+        denominator *= other.denominator;
         reduce();
     }
 
-
-    // c) public void integerMultiply(int k) This method should multiply the fraction 
-    // by the specified integer, eg. 4 * 2 / 3 = 8 / 3 
+    // c) public void integerMultiply(int k) This method should multiply the fraction
+    // by the specified integer, eg. 4 * 2 / 3 = 8 / 3
     public void integerMultiply(int k) {
         numerator *= k;
         reduce();
     }
 
-
-    // d)  public void reduce() This method reduces the implicit object Fraction to its 
-    // lowest terms. It also changes the signs of the numerator and denominator as follows: 
+    // d)  public void reduce() This method reduces the implicit object Fraction to its
+    // lowest terms. It also changes the signs of the numerator and denominator as follows:
     // if the fraction is negative, ensures only the numerator is negative,
-    // rather than the denominator; if both numerator and denominator are negative, 
+    // rather than the denominator; if both numerator and denominator are negative,
     // they are both made positive, eg. 2 / 8 -> 1 / 4, 7 /-3 -> -7 / 3, -3 /-9 -> 1 / 3.
     public int gcd(int a, int b) {
         if (b == 0) {
@@ -194,36 +188,35 @@ public class Fraction {
         return multiply(other.reciprocal());
     }
 
+    // g) public Fraction subtract(Fraction other) This method
+    // returns the parameter object subtracted from the implicit Fraction object.
+    public Fraction subtract(Fraction other) {
+        Fraction neg = new Fraction(-other.numerator, other.denominator);
+        return add(other);
+    }
 
     // Class Method (Product Exercise)
     public static Fraction product(Fraction f1, Fraction f2) {
         return f1.multiply(f2);
     }
 
-    // 2. Class Methods Create class (static) methods sum, difference, and 
-    // quotient. They should take two Fraction objects f1 and f2 as parameters,
-    //  perform each operation and return a Fraction in lowest terms. 
-    // (Hint: utilize existing methods)
+    // 2. Class Methods Create class (static) methods sum, difference, and quotient. 
+    // They should take two Fraction objects f1 and f2 as parameters, perform each operation
+    // and return a Fraction in lowest terms. (Hint: utilize existing methods)
     public static Fraction sum(Fraction f1, Fraction f2) {
         return f1.add(f2);
     }
 
-    public static Fraction diference(Fraction f1, Fraction f2) {
-        f2.integerMultiply(-1);
-        return f1.add(f2);
+    public static Fraction difference(Fraction f1, Fraction f2) {
+        return f1.subtract(f2);
     }
 
     public static Fraction quotient(Fraction f1, Fraction f2) {
-        return f1.multiply(f2.reciprocal());
+        return f1.divide(f2);
     }
 
     // 3. ****
     
-    // Calling Class method in class
-    // public static void foo() {
-    //    product(new Fraction(1,2 ) , new Fraction(2,3 ));
-    // }
-
     // What is the string representation of the string Object
     @Override
     public String toString() {
@@ -235,7 +228,6 @@ public class Fraction {
         else if (denominator == 1) {
             return "" + numerator;
         }
-
         return numerator + "/" + denominator;
     }
 }
