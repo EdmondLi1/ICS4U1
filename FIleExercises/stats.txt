@@ -1,0 +1,3 @@
+Vowel count: 259
+Total letters: 868
+Vowel percentage: 29.84%
