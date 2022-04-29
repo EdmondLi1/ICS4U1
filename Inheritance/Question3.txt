@@ -1,0 +1,89 @@
+class Vehicle {
+	private int numWheels;
+
+	public Vehicle (int nw) {
+		numWheels = nw;
+	}
+
+	public int getNumWheels() {
+		return numWheels;
+	}
+}
+
+class Truck extends Vehicle {
+	private int loadCapacity;
+	
+	public Truck (int nw, int lc) {
+		super(nw);
+		loadCapacity = lc;
+	}
+
+	public int getLoadCapacity() {
+		return loadCapacity;
+	}
+}
+
+class Car extends Vehicle {
+	private int numSeats;
+
+	public Car (int ns) {
+		super(4);
+		numSeats = ns;
+	}
+
+	public int getNumSeats() {
+		return numSeats;
+	}
+}
+
+///////
+i)   The statement will compile and execute correctly.
+ii)  The statement will not compile but it can be repaired by a cast.
+iii) The statement will not compile and cannot be repaired by a cast.
+iv)  The statement will compile but fails to execute correctly.
+//////
+
+
+a)  Vehicle v1 = new Vehicle(4);
+    int nw = v1.getNumWheels();
+
+// i)
+
+b)  Car c1 = new Car(6);
+    System.out.println(c1.getNumWheels());
+
+// i)
+
+c)  Vehicle v2 = new Car(4);
+    int capacity = v2.getNumSeats();
+
+// ii)
+
+d)  Truck t1 = new Truck(18, 14000);
+    int loadLimit = ((Vehicle) t1).getNumSeats();
+
+// iii)
+
+e)  Car c2 = new Car(5);
+    int maxLoad = (((Truck) c2).getLoadCapacity());
+
+// iii)
+
+f)  Vehicle v3 = new Vehicle(4);
+    System.out.println(((Car) v3).getNumSeats());
+
+// iii)
+
+g)  Vehicle v4 = new Truck(4, 1200);
+    System.out.println(((Truck) v4).getNumWheels());
+
+// i); dont need cast
+
+h)  Truck t2 = new Truck(10, 8000);
+    Car c3 = (Car) t2;
+
+// iii)
+
+
+
+
