@@ -1,0 +1,5 @@
+1.
+A = ref.data
+B = ref.next
+C = B.next  or  (ref.next).next
+D = C.data  or  ((ref.next).next).data
